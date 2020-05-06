@@ -1,0 +1,113 @@
+<div class="signup-page-wrapper">
+  <div [formGroup]="signUpForm" class="container">
+    <!--  Logo  -->
+    <div class="row">
+      <div class="col">
+        <img alt="" src="../../../assets/logo.png">
+      </div>
+    </div>
+
+    <!-- Title   -->
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Salutation</mat-label>
+          <mat-select formControlName="title">
+            <mat-option
+              *ngFor="let salutation of salutations"
+              [value]="salutation.value">
+              {{salutation.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Employee name -->
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput
+                 placeholder="John Doe">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!--  Email id input  -->
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput
+                 placeholder="abc@def.com">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!--  password input  -->
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input formControlName="password" matInput
+                 type="password">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Date of Birth -->
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <input
+            [matDatepicker]="myDatePicker2"
+            formControlName="dob"
+            matInput
+            placeholder="Date of birth"
+          />
+          <mat-datepicker-toggle
+            [for]="myDatePicker2"
+            matSuffix
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Request to become admin  -->
+    <div class="row">
+      <div class="col">
+        <mat-slide-toggle formControlName="admin">Register
+          as Admin?
+        </mat-slide-toggle>
+      </div>
+    </div>
+
+    <!-- Buttons  -->
+    <div class="row">
+      <div class="col">
+        <!--  Sign up button  -->
+        <button
+          (click)="submit()"
+          [disabled]="signUpForm.invalid"
+          class="button_style"
+          color="primary"
+          mat-raised-button
+        >
+          Sign Up
+        </button>
+        <!--  reset button  -->
+        <button
+          (click)="reset()"
+          class="button_style"
+          color="primary"
+          mat-raised-button
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

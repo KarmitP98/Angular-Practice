@@ -1,0 +1,101 @@
+<div class="container container_style">
+  <div class="row">
+    <div class="col">
+      <table [dataSource]="leaveList"
+             class="mat-elevation-z8" mat-table>
+        <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- approved Column -->
+        <ng-container matColumnDef="select">
+          <th *matHeaderCellDef mat-header-cell>Select</th>
+          <td *matCellDef="let element" mat-cell>
+            <mat-radio-group [(ngModel)]="selectedLeave"
+                             fxLayout="column">
+              <mat-radio-button
+                (change)="changeLeaveStatus($event,element)"
+                [value]="element">
+              </mat-radio-button>
+            </mat-radio-group>
+
+          </td>
+        </ng-container>
+        <!-- Employee_Name Column -->
+        <ng-container matColumnDef="annual_leaveId">
+          <th *matHeaderCellDef mat-header-cell>Leave ID
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.annual_leaveId }}
+          </td>
+        </ng-container>
+
+        <!-- Employee_Name Column -->
+        <ng-container matColumnDef="employeeId">
+          <th *matHeaderCellDef mat-header-cell>employeeId
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.employeeId }}
+          </td>
+        </ng-container>
+
+        <!-- From Date Column -->
+        <ng-container matColumnDef="date_from">
+          <th *matHeaderCellDef mat-header-cell>Date From
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ moment(element.date_from).format("DD/MM/YYYY") }}
+          </td>
+        </ng-container>
+
+        <!-- To Date Column -->
+        <ng-container matColumnDef="date_to">
+          <th *matHeaderCellDef mat-header-cell>Date To</th>
+          <td *matCellDef="let element" mat-cell>
+            {{ moment(element.date_to).format("DD/MM/YYYY") }}
+          </td>
+        </ng-container>
+
+        <!-- Type Of Leave Column -->
+        <ng-container matColumnDef="type">
+          <th *matHeaderCellDef mat-header-cell>Type Of
+            Leave
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.type }}
+          </td>
+        </ng-container>
+        <!-- Status Column -->
+        <ng-container matColumnDef="approved">
+          <th *matHeaderCellDef mat-header-cell>Status</th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.approved }}
+          </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="displayedColumns"
+            mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns"
+            mat-row></tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button
+        (click)="ApproveLeave('approved')"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        Approve
+      </button>
+    </div>
+    <div class="col">
+      <button (click)="ApproveLeave('declined')"
+              class="button_style" color="primary"
+              mat-raised-button>
+        Decline
+      </button>
+    </div>
+  </div>
+</div>

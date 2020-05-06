@@ -1,0 +1,17 @@
+<mat-toolbar *ngIf="auth.isLoggedIn" color="primary">
+  <h1>FFMC</h1>
+  <button mat-button routerLink="/home">Home</button>
+  <button mat-button routerLink="/time-sheet">Timesheet
+  </button>
+  <button mat-button routerLink="/annual-leave">Annual
+    Leave
+  </button>
+  <button mat-button routerLink="/sick-leave">Sick Leave
+  </button>
+  <button *ngIf="auth.isAdmin" mat-button
+          routerLink="/admin">Admin
+  </button>
+  <button (click)="logout()" mat-button>Logout</button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

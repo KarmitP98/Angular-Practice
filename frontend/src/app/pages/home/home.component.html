@@ -1,0 +1,56 @@
+<div class="container container_style">
+  <p>Welcome To The Forever Fenix Care Management
+    Centre!</p>
+  <div class="row">
+    <!-- Navigate to Time Sheet page-->
+    <div class="col">
+      <button
+        (click)="goTo('time-sheet')"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        Timesheet
+      </button>
+    </div>
+    <!-- Navigate to Annual Leave page-->
+
+    <div class="col">
+      <button
+        (click)="goTo('annual-leave')"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        Annual Leave
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Navigate to Sick Leave page-->
+
+    <div class="col">
+      <button
+        (click)="goTo('sick-leave')"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        Sick Leave
+      </button>
+    </div>
+    <!-- Navigate to Admin page-->
+
+    <div *ngIf="authenticationService.isAdmin" class="col">
+      <button
+        (click)="goTo('admin')"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        Admin
+      </button>
+    </div>
+  </div>
+</div>

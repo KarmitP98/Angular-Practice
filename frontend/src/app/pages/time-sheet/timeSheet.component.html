@@ -1,0 +1,104 @@
+<div class="container container_style">
+  <br/>
+
+  <div class="row">
+    <div class="col">
+      <table [dataSource]="dataSource"
+             class="mat-elevation-z8" mat-table>
+        <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef mat-header-cell>Name</th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.name }}
+          </td>
+          <td *matFooterCellDef mat-footer-cell>
+            <mat-form-field class="example-full-width">
+              <input [(ngModel)]="name" matInput
+                     placeholder="Name" value=""/>
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <!-- Task Column -->
+        <ng-container matColumnDef="task">
+          <th *matHeaderCellDef mat-header-cell>Task</th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.task }}
+          </td>
+          <td *matFooterCellDef mat-footer-cell>
+            <mat-form-field class="example-full-width">
+              <input [(ngModel)]="task" matInput
+                     placeholder="Task" value=""/>
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+          <th *matHeaderCellDef mat-header-cell>Date</th>
+          <td *matCellDef="let element" mat-cell>
+            {{ moment(element.date).format("DD/MM/YYYY") }}
+          </td>
+          <td *matFooterCellDef mat-footer-cell>
+            <mat-form-field>
+              <input
+                [(ngModel)]="date"
+                [matDatepicker]="myDatePicker2"
+                matInput
+                placeholder="End date"
+              />
+              <mat-datepicker-toggle
+                [for]="myDatePicker2"
+                matSuffix
+              ></mat-datepicker-toggle>
+              <mat-datepicker
+                #myDatePicker2></mat-datepicker>
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <!-- Time Column -->
+        <ng-container matColumnDef="time_logged">
+          <th *matHeaderCellDef mat-header-cell>Time
+            Logged
+          </th>
+          <td *matCellDef="let element"
+              mat-cell>{{ element.time_logged }}</td>
+          <td *matFooterCellDef mat-footer-cell>
+            <mat-form-field class="example-full-width">
+              <input
+                [(ngModel)]="time"
+                matInput
+                placeholder="00:30:00"
+                value=""
+              />
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="displayedColumns"
+            mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns"
+            mat-row></tr>
+        <tr *matFooterRowDef="displayedColumns"
+            mat-footer-row></tr>
+      </table>
+    </div>
+  </div>
+  <!-- Submit Footer to Server-->
+  <div class="row">
+    <div class="col">
+      <button
+        (click)="SubmitNewtimeSheet()"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

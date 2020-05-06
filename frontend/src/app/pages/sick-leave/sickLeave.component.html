@@ -1,0 +1,55 @@
+<div class="container setCenter">
+  <div class="row">
+    <div class="col">
+      <!-- Start Date for Sick Live-->
+
+      <mat-form-field>
+        <input
+          (dateChange)="dateChange($event, 'sickStart')"
+          [matDatepicker]="myDatePicker"
+          matInput
+          placeholder="From date"
+          required
+        />
+        <mat-datepicker-toggle
+          [for]="myDatePicker"
+          matSuffix
+        ></mat-datepicker-toggle>
+        <mat-datepicker #myDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <!-- End Date for Sick Live-->
+      <mat-form-field>
+        <input
+          (dateChange)="dateChange($event, 'sickEnd')"
+          [matDatepicker]="myDatePicker2"
+          matInput
+          placeholder="End date"
+          required
+        />
+        <mat-datepicker-toggle
+          [for]="myDatePicker2"
+          matSuffix
+        ></mat-datepicker-toggle>
+        <mat-datepicker #myDatePicker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button
+        (click)="submit()"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+<div class="container container_style">
+  <div class="row">
+    <div class="col">
+      <table *ngIf="requestsList.length"
+             [dataSource]="requestsList"
+             class="mat-elevation-z8" mat-table>
+        <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- radio button to select row -->
+        <ng-container matColumnDef="select">
+          <th *matHeaderCellDef mat-header-cell>Select</th>
+          <td *matCellDef="let element" mat-cell>
+            <mat-radio-group [(ngModel)]="selectedRequest"
+                             fxLayout="column">
+              <mat-radio-button [value]="element">
+              </mat-radio-button>
+            </mat-radio-group>
+
+          </td>
+        </ng-container>
+
+        <!-- Employee ID Column -->
+        <ng-container matColumnDef="employeeId">
+          <th *matHeaderCellDef mat-header-cell>Employee
+            ID
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.employeeId }}
+          </td>
+        </ng-container>
+
+        <!-- Employee Name Column -->
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef mat-header-cell>Employee
+            name
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.name }}
+          </td>
+        </ng-container>
+
+        <!-- Employee email Column -->
+        <ng-container matColumnDef="email">
+          <th *matHeaderCellDef mat-header-cell>Email</th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.email }}
+          </td>
+        </ng-container>
+
+        <!-- Date of birth Column -->
+        <ng-container matColumnDef="dob">
+          <th *matHeaderCellDef mat-header-cell>Date of
+            birth
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ moment(element.dob).format("DD/MM/YYYY") }}
+          </td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="admin">
+          <th *matHeaderCellDef mat-header-cell>Status</th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.admin }}
+          </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="displayedColumns"
+            mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns"
+            mat-row></tr>
+      </table>
+      <div *ngIf="requestsList.length === 0"
+           class="no-requests-text">
+        No Pending requests
+      </div>
+    </div>
+  </div>
+  <!-- Buttons to approve/reject an entry -->
+  <div *ngIf="requestsList.length" class="row">
+    <div class="col">
+      <button
+        (click)="approve()"
+        [disabled]="!selectedRequest"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        Approve
+      </button>
+    </div>
+    <div class="col">
+      <button
+        (click)="reject()"
+        [disabled]="!selectedRequest"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        Decline
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container container_style">
+
+  <div class="row">
+    <!-- navigate to Leave Request-->
+    <div class="col">
+      <button
+        (click)="goTo('leave-requests')"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        View Leave Requests
+      </button>
+    </div>
+
+    <!-- navigate to TimeSheet Log-->
+    <div class="col">
+      <button
+        (click)="goTo('time-sheet-log')"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        View Timesheet Log
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Navigate to Admin requests -->
+  <div class="row">
+    <div class="col">
+      <button
+        (click)="goTo('admin-requests')"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        Admin Requests
+      </button>
+    </div>
+  </div>
+
+</div>

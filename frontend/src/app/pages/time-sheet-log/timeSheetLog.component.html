@@ -1,0 +1,97 @@
+<div class="container container_style">
+  <div class="row">
+    <div class="col">
+      <table [dataSource]="timeSheetLog"
+             class="mat-elevation-z8" mat-table>
+        <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- approved Column -->
+        <ng-container matColumnDef="select">
+          <th *matHeaderCellDef mat-header-cell>Select</th>
+          <td *matCellDef="let element" mat-cell>
+            <mat-radio-group [(ngModel)]="selectedTimeSheet"
+                             fxLayout="column">
+              <mat-radio-button
+                (change)="changeTimeSheetStatus($event, element)"
+                [value]="element"
+              >
+              </mat-radio-button>
+            </mat-radio-group>
+          </td>
+        </ng-container>
+        <!-- Employee_Name Column -->
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef mat-header-cell>Employee
+            Name
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.name }}
+          </td>
+        </ng-container>
+
+        <!-- Type Of Leave Column -->
+        <ng-container matColumnDef="task">
+          <th *matHeaderCellDef mat-header-cell>Task</th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.task }}
+          </td>
+        </ng-container>
+
+        <!-- Date Of Leave Column -->
+        <ng-container matColumnDef="date">
+          <th *matHeaderCellDef mat-header-cell>Time
+            Logged
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ moment(element.date).format("DD/MM/YYYY") }}
+          </td>
+        </ng-container>
+
+        <!-- time_logged Of Leave Column -->
+        <ng-container matColumnDef="time_logged">
+          <th *matHeaderCellDef mat-header-cell>Time
+            Logged
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.time_logged }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="approved">
+          <th *matHeaderCellDef mat-header-cell>Status</th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.approved }}
+          </td>
+        </ng-container>
+        <tr *matHeaderRowDef="displayedColumns"
+            mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns"
+            mat-row></tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Approve TimeSheet-->
+    <div class="col">
+      <button
+        (click)="ApproveTimeSheet('approved')"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        Approve
+      </button>
+    </div>
+    <!-- Decline TimeSheet-->
+    <div class="col">
+      <button
+        (click)="ApproveTimeSheet('declined')"
+        class="button_style"
+        color="primary"
+        mat-raised-button
+      >
+        Decline
+      </button>
+    </div>
+  </div>
+</div>

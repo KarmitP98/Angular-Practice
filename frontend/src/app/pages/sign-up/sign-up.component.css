@@ -1,0 +1,16 @@
+.signup-page-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+img {
+  margin: 50px 0;
+  height: 150px;
+  width: 300px;
+}
+
+button {
+  margin-left: 10px;
+}
